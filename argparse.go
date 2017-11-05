@@ -1,14 +1,4 @@
-
-// Author: Zer1t0
-
 package argparse
-
-/*
-Things to add:
-- Basic types
-- Maps
-- Arrays
-*/
 
 import (
 	"fmt"
@@ -19,6 +9,14 @@ import (
 	"path/filepath"
 )
 
+// Author: Zer1t0
+
+/*
+Things to add:
+- Basic types
+- Maps
+- Arrays
+*/
 
 const pARAMPREFIX = '-'
 const NOSHORTCUT rune = 0
@@ -1694,8 +1692,6 @@ func StringToArgv(line string) []string {
 
     subline := strings.TrimSpace(line)
 
-    fmt.Println(subline)
-
     for len(subline) > 0 {
         arg.Reset()
         finisher = ' '
@@ -1724,10 +1720,9 @@ func StringToArgv(line string) []string {
         args = append(args, arg.String())
         i++
         if i >= len(subline) {
-            subline = ""
-        } else {
-            subline = strings.TrimSpace(subline[i:])
+            break
         }
+        subline = strings.TrimSpace(subline[i:])
     }
 
     return args
